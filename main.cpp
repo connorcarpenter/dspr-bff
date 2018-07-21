@@ -7,12 +7,15 @@ int main()
 
     h.onConnection([&h](uWS::WebSocket<uWS::SERVER> *ws, uWS::HttpRequest req)
     {
-        ws->send("connected to bff!\r\n", uWS::BINARY);
+
     });
 
     h.onMessage([&h](uWS::WebSocket<uWS::SERVER> *ws, char *data, size_t length, uWS::OpCode opCode)
     {
-        ws->send("message from bff!\r\n", uWS::BINARY);
+        if (strncmp(data, "gameservers/1.0/join", 20) == 0){
+            ws->send("gameserver/connect|www.deuspora.com:3173\r\n", uWS::BINARY); //the \r\n makes it happen on EMSC! Don't remove!
+        }
+
     });
 
     h.getDefaultGroup<uWS::SERVER>().startAutoPing(30000);
