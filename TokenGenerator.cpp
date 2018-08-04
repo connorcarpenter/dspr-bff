@@ -12,7 +12,7 @@ namespace DsprBff
         std::stringstream output;
         for(int i=0;i<playerTokenLength;i++)
         {
-            auto c = 'a' + rand() % 26;
+            char c = 'a' + rand() % 26;
             output << c;
         }
         return output.str();
