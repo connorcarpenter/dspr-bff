@@ -49,7 +49,7 @@ uWS::WebSocket<uWS::CLIENT>* gameServer = nullptr;
                 std::stringstream playerMsg;
                 playerMsg << "gameserver/connect|www.deuspora.com:3173|"
                           << playerToken
-                          << "\r\n";
+                          << '\1';
                 ws->send(playerMsg.str().c_str(), uWS::BINARY); //the \r\n makes it happen on EMSC! Don't remove!
 
                 //logging
